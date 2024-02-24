@@ -17,13 +17,13 @@ export default class InsertionSort extends Algorithm {
         while (j >= 0 && tempArray[j] > current) {
           tempArray[j + 1] = tempArray[j];
           j--;
-          setArray([...tempArray]);
+          //setArray([...tempArray]);
         }
         tempArray[j + 1] = current; // Place current element at its correct position
         setArray([...tempArray]); // Update the array state after each iteration
       }, i * speed); // Adjust the timeout delay according to your preference
     }
 
-    return tempArray; // Return the sorted array
+    //return tempArray; // Return the sorted array
   }
 }

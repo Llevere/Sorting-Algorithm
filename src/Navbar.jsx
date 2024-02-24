@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import BubbleSort from "./classes/BubbleSort";
 import MergeSort from "./classes/MergeSort";
 import InsertionSort from "./classes/InsertionSort";
+import RadixSort from "./classes/RadixSort";
+import SelectionSort from "./classes/SelectionSort";
 
 function Navbar({
   generateNewArray,
@@ -57,7 +59,6 @@ function Navbar({
           algorithmType(new MergeSort());
           setActiveButton("merge");
         }}
-        disabled={isSorting}
       >
         Merge Sort
       </button> */}
@@ -73,6 +74,31 @@ function Navbar({
         /*disabled={isSorting}*/
       >
         Insertion Sort
+      </button>
+      {/* <button
+        style={{
+          backgroundColor: activeButton === "radix" ? "green" : "",
+          color: activeButton === "radix" ? "white" : "black",
+        }}
+        onClick={() => {
+          algorithmType(new RadixSort());
+          setActiveButton("radix");
+        }}
+      >
+        Radix Sort
+      </button> */}
+      <button
+        style={{
+          backgroundColor: activeButton === "selection" ? "green" : "",
+          color: activeButton === "selection" ? "white" : "black",
+        }}
+        onClick={() => {
+          algorithmType(new SelectionSort());
+          setActiveButton("selection");
+        }}
+        /*disabled={isSorting}*/
+      >
+        Selection Sort
       </button>
       <span style={{ marginLeft: 20 }}>
         Processing Speed {"(Time between animations in miliseconds)"}:{" "}
