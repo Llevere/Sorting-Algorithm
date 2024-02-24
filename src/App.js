@@ -53,7 +53,7 @@ function App() {
                 id="array-number"
                 key={index}
                 style={{
-                  height: `${num * 3}px`,
+                  height: `${num * 2.5}px`,
                 }}
               >
                 {num}

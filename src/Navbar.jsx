@@ -4,6 +4,8 @@ import MergeSort from "./classes/MergeSort";
 import InsertionSort from "./classes/InsertionSort";
 import RadixSort from "./classes/RadixSort";
 import SelectionSort from "./classes/SelectionSort";
+import QuickSort from "./classes/QuickSort";
+import HeapSort from "./classes/HeapSort";
 
 function Navbar({
   generateNewArray,
@@ -62,6 +64,30 @@ function Navbar({
       >
         Merge Sort
       </button> */}
+      {/* <button
+        style={{
+          backgroundColor: activeButton === "heap" ? "green" : "",
+          color: activeButton === "heap" ? "white" : "black",
+        }}
+        onClick={() => {
+          algorithmType(new HeapSort());
+          setActiveButton("heap");
+        }}
+      >
+        Heap Sort
+      </button> */}
+      <button
+        style={{
+          backgroundColor: activeButton === "quick" ? "green" : "",
+          color: activeButton === "quick" ? "white" : "black",
+        }}
+        onClick={() => {
+          algorithmType(new QuickSort());
+          setActiveButton("quick");
+        }}
+      >
+        Quick Sort
+      </button>
       <button
         style={{
           backgroundColor: activeButton === "insertion" ? "green" : "",
