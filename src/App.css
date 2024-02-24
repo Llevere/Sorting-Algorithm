@@ -71,3 +71,9 @@
     width: 2px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  #array-number {
+    width: 1px;
+  }
+}
