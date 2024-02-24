@@ -35,7 +35,7 @@ function Navbar({
         Sort
       </button>
       <span style={{ marginLeft: 20 }}>Reload the page to reset</span>
-      <span style={{ marginLeft: 20 }}>Array size - 100</span>
+      <span style={{ marginLeft: 20, marginRight: 20 }}>Array size - 100</span>
       <button
         style={{
           backgroundColor: activeButton === "bubble" ? "green" : "",
@@ -76,7 +76,11 @@ function Navbar({
       >
         Insertion Sort
       </button>
+      <span style={{ marginLeft: 20 }}>
+        Processing Speed {"(Time between animations in miliseconds)"}:{" "}
+      </span>
       <input
+        style={{}}
         type="range"
         min="5"
         max="100"
