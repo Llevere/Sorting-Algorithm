@@ -27,13 +27,11 @@ function Navbar({
         onClick={() => {
           generateNewArray();
         }}
-        disabled={isSorting}
+        /*disabled={isSorting}*/
       >
         New Array
       </button>
-      <button onClick={() => sortArray()} disabled={isSorting}>
-        Sort
-      </button>
+      <button onClick={() => sortArray()} /*disabled={isSorting}*/>Sort</button>
       <span style={{ marginLeft: 20 }}>Reload the page to reset</span>
       <span style={{ marginLeft: 20, marginRight: 20 }}>Array size - 100</span>
       <button
@@ -46,7 +44,7 @@ function Navbar({
           algorithmType(new BubbleSort());
           setActiveButton("bubble");
         }}
-        disabled={isSorting}
+        /*disabled={isSorting}*/
       >
         Bubble Sort
       </button>
@@ -72,7 +70,7 @@ function Navbar({
           algorithmType(new InsertionSort());
           setActiveButton("insertion");
         }}
-        disabled={isSorting}
+        /*disabled={isSorting}*/
       >
         Insertion Sort
       </button>
