@@ -1,72 +1,45 @@
 import Algorithm from "./sortingAlgorithm";
 
 export default class MergeSort extends Algorithm {
-  sort(array, setArray, arraySorted, speed) {
-    function merge(arr, l, m, r) {
-      var n1 = m - l + 1;
-      var n2 = r - m;
+  async sort(array, setArray, arraySorted, speed) {
+    // Define the merge sort function
+    function mergeSort(arr) {
+      // Base case: if the array has one or fewer elements, it's already sorted
+      if (arr.length <= 1) return arr;
 
-      // Create temp arrays
-      var L = new Array(n1);
-      var R = new Array(n2);
+      // Calculate the middle index of the array
+      const middle = Math.floor(arr.length / 2);
 
-      // Copy data to temp arrays L[] and R[]
-      for (var i = 0; i < n1; i++) L[i] = arr[l + i];
-      for (var j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
+      // Split the array into two halves: left and right
+      const left = arr.slice(0, middle);
+      const right = arr.slice(middle);
 
-      // Merge the temp arrays back into arr[l..r]
+      // Recursively merge sort the left and right halves, and then merge them
+      return merge(mergeSort(left), mergeSort(right));
+    }
 
-      // Initial index of first subarray
-      var i = 0;
+    // Define the merge function to merge two sorted arrays
+    function merge(left, right) {
+      let result = [];
+      let leftIndex = 0;
+      let rightIndex = 0;
 
-      // Initial index of second subarray
-      var j = 0;
-
-      // Initial index of merged subarray
-      var k = l;
-
-      while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
-          arr[k] = L[i];
-          i++;
+      // Merge the two sorted arrays into a single sorted array
+      while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+          result.push(left[leftIndex]);
+          leftIndex++;
         } else {
-          arr[k] = R[j];
-          j++;
+          result.push(right[rightIndex]);
+          rightIndex++;
         }
-        k++;
       }
 
-      // Copy the remaining elements of
-      // L[], if there are any
-      while (i < n1) {
-        arr[k] = L[i];
-        i++;
-        k++;
-      }
-
-      // Copy the remaining elements of
-      // R[], if there are any
-      while (j < n2) {
-        arr[k] = R[j];
-        j++;
-        k++;
-      }
-      //setArray([...arr]);
+      // Concatenate any remaining elements from the left and right arrays
+      return result.concat(left.slice(leftIndex), right.slice(rightIndex));
     }
 
-    // l is for left index and r is
-    // right index of the sub-array
-    // of arr to be sorted
-    function mergeSort(arr, l, r) {
-      if (l >= r) {
-        return;
-      }
-      var m = l + parseInt((r - l) / 2);
-      mergeSort(arr, l, m);
-      mergeSort(arr, m + 1, r);
-      merge(arr, l, m, r);
-    }
-
-    mergeSort(array, 0, array.length - 1);
+    // Perform the merge sort operation on the array
+    setArray(mergeSort(array));
   }
 }

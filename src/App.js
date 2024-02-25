@@ -1,9 +1,7 @@
 import "./App.css";
 import Navbar from "./Navbar";
 import generateNewArray from "./GenerateNewArray";
-import sort from "./SortArray";
 import { useState, useEffect } from "react";
-import Algorithm from "./classes/sortingAlgorithm";
 import BubbleSort from "./classes/BubbleSort";
 function App() {
   const [array, setArray] = useState([]);
@@ -19,13 +17,12 @@ function App() {
     setArray(generateNewArray());
     setCancelSorting(false);
   }
+  const arraySorted = () => {
+    setSortingBtnDisabled(false);
+  };
 
   async function sortArray() {
-    setSortingBtnDisabled(true);
-    const arraySorted = () => {
-      setSortingBtnDisabled(false);
-    };
-    await algorithmType.sort(array, setArray, arraySorted, speed);
+    algorithmType.sort(array, setArray, arraySorted, speed);
   }
 
   function setSortingType(sortingType) {
@@ -37,10 +34,46 @@ function App() {
     setSortingBtnDisabled(false);
   };
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // Update window width when the window is resized
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleDynamicSizing = () => {
+    let pixelSize = 0; //30px for an array size of 700
+    let maxArraySize = 700;
+    for (let i = 0; i < maxArraySize; i += 100) {
+      if (i >= array.length) {
+        console.log(`Returning pixel size: ${pixelSize}`);
+        return pixelSize;
+      }
+
+      // Decrease by 5 pixel until it reach
+      pixelSize += 20;
+
+      //
+      if (pixelSize >= maxArraySize) return 30;
+    }
+
+    return pixelSize;
+  };
+
   return (
     <div>
       <Navbar
         generateNewArray={newArray}
+        disableSort={sortingBtnDisabled}
         sortArray={sortArray}
         algorithmType={setSortingType}
         processingSpeed={setSpeed}

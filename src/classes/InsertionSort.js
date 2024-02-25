@@ -23,7 +23,5 @@ export default class InsertionSort extends Algorithm {
         setArray([...tempArray]); // Update the array state after each iteration
       }, i * speed); // Adjust the timeout delay according to your preference
     }
-
-    //return tempArray; // Return the sorted array
   }
 }

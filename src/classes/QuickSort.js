@@ -18,9 +18,7 @@ export default class QuickSort extends Algorithm {
         setArray([...arr]);
       }
       // Swap arr[i+1] and arr[high] (or pivot)
-      var temp = arr[i + 1];
-      arr[i + 1] = arr[high];
-      arr[high] = temp;
+      [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
       setArray([...arr]);
       return i + 1;
     }
@@ -35,7 +33,7 @@ export default class QuickSort extends Algorithm {
           quickSort(arr, pi + 1, high);
           setArray([...arr]);
         }, speed * 5);
-      }
+      } else return;
       setArray([...arr]);
     }
 

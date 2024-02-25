@@ -2,10 +2,10 @@ import Algorithm from "./sortingAlgorithm";
 
 export default class BubbleSort extends Algorithm {
   sort(array, setArray, arraySorted, speed) {
-    const len = array.length;
+    const arrayLength = array.length;
     let tempArray = array.slice();
-    for (let i = 0; i < len; i++) {
-      for (let j = 0; j < len - 1; j++) {
+    for (let i = 0; i < arrayLength; i++) {
+      for (let j = 0; j < arrayLength - 1; j++) {
         setTimeout(() => {
           if (tempArray[j] > tempArray[j + 1]) {
             let temp = tempArray[j];
@@ -13,9 +13,8 @@ export default class BubbleSort extends Algorithm {
             tempArray[j + 1] = temp;
             setArray([...tempArray]);
           }
-        }, (i * len + j) * speed);
+        }, (i * arrayLength + j) * speed);
       }
     }
-    return tempArray;
   }
 }
