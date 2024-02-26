@@ -21,6 +21,7 @@ function App() {
   };
 
   async function sortArray() {
+    setSortingBtnDisabled(true);
     algorithmType.sort(array, setArray, arraySorted, speed);
   }
 

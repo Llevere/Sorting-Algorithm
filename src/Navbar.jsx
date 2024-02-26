@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BubbleSort from "./classes/BubbleSort";
 import MergeSort from "./classes/MergeSort";
 import InsertionSort from "./classes/InsertionSort";
-import RadixSort from "./classes/RadixSort";
 import SelectionSort from "./classes/SelectionSort";
 import QuickSort from "./classes/QuickSort";
 import HeapSort from "./classes/HeapSort";
@@ -16,13 +15,8 @@ function Navbar({
   processingSpeed,
 }) {
   const [activeButton, setActiveButton] = useState("bubble");
-  const [isSorting, setIsSorting] = useState(false);
   const [sortingSpeed, setSortingSpeed] = useState(20);
   const [showAlgorithmType, setShowAlgorithmType] = useState(false);
-
-  function handleActiveSorting() {
-    setIsSorting(true);
-  }
 
   function handleSpeedChange(e) {
     setSortingSpeed(e.target.value);
@@ -53,7 +47,9 @@ function Navbar({
         >
           New Data Set
         </button>
-        <button onClick={() => sortArray()}>Sort</button>
+        <button onClick={() => sortArray()} disabled={disableSort}>
+          Sort
+        </button>
       </div>
       <div id="algorithm-handling">
         <button

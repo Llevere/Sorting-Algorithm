@@ -89,5 +89,6 @@ export default class TimSort extends Algorithm {
 
     await timSort(array, array.length);
     setArray([...array]);
+    arraySorted();
   }
 }

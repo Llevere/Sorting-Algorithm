@@ -34,7 +34,9 @@ export default class QuickSort extends Algorithm {
 
       return i + 1;
     };
+
     await quickSort(array);
     setArray([...array]);
+    arraySorted();
   }
 }

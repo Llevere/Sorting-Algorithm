@@ -2,7 +2,7 @@ import Algorithm from "./sortingAlgorithm";
 
 export default class HeapSort extends Algorithm {
   async sort(array, setArray, arraySorted, speed) {
-    const heapSort = async () => {
+    async function heapSort() {
       const n = array.length;
 
       // rearrange array
@@ -18,7 +18,7 @@ export default class HeapSort extends Algorithm {
         // Call max heapify on the reduced heap
         await heapify(i, 0);
       }
-    };
+    }
 
     // To heapify a subtree rooted with node i which is an index in arr[]
     const heapify = async (n, i) => {
@@ -51,5 +51,6 @@ export default class HeapSort extends Algorithm {
 
     await heapSort();
     setArray([...array]);
+    arraySorted();
   }
 }

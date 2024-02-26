@@ -46,5 +46,6 @@ export default class MergeSort extends Algorithm {
 
     await mergeSort(array, 0, array.length - 1);
     setArray([...array]);
+    arraySorted();
   }
 }
