@@ -1,65 +1,49 @@
 import Algorithm from "./sortingAlgorithm";
 
-export default class QuickSort extends Algorithm {
-  sort(array, setArray, arraySorted, speed) {
-    // const quickSort = (arr, left = 0, right = arr.length - 1) => {
-    //   if (left < right) {
-    //     const partitionIndex = partition(arr, left, right);
+export default class QuickSort {
+  async sort(array, setArray, arraySorted, speed) {
+    // Asynchronous Quick Sort function
+    const quickSort = async (arr, left = 0, right = arr.length - 1) => {
+      if (left < right) {
+        // Partition the array
+        const partitionIndex = await partition(arr, left, right);
 
-    //     // Delay the next step by the specified speed
-    //     setTimeout(() => {
-    //       quickSort(arr, left, partitionIndex - 1);
-    //     }, speed * 10);
+        // Recursively sort the left and right partitions
+        await quickSort(arr, left, partitionIndex - 1);
+        await quickSort(arr, partitionIndex + 1, right);
+      }
+    };
 
-    //     setTimeout(() => {
-    //       quickSort(arr, partitionIndex + 1, right);
-    //     }, speed * 10);
-    //   }
-    // };
+    // Partition function
+    const partition = async (arr, left, right) => {
+      // Choose the pivot element (in this implementation, the rightmost element)
+      const pivot = arr[right];
+      let i = left - 1;
 
-    // const partition = (arr, left, right) => {
-    //   const pivot = arr[right];
-    //   let i = left - 1;
+      for (let j = left; j < right; j++) {
+        if (arr[j] <= pivot) {
+          // Swap arr[i] and arr[j]
+          i++;
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+          // Update UI after each swap
+          await new Promise((resolve) => setTimeout(resolve, speed));
+          setArray([...arr]);
+        }
+      }
 
-    //   for (let j = left; j < right; j++) {
-    //     if (arr[j] <= pivot) {
-    //       i++;
-    //       [arr[i], arr[j]] = [arr[j], arr[i]];
-    //       setArray([...arr]);
-    //     }
-    //   }
+      // Swap arr[i+1] and arr[right] (or pivot)
+      [arr[i + 1], arr[right]] = [arr[right], arr[i + 1]];
+      // Update UI after partitioning
+      await new Promise((resolve) => setTimeout(resolve, speed));
+      setArray([...arr]);
 
-    //   [arr[i + 1], arr[right]] = [arr[right], arr[i + 1]];
-    //   setArray([...arr]); // Update array state after each partition
+      // Return the partition index
+      return i + 1;
+    };
 
-    //   return i + 1;
-    // };
-    function quickSort(array, start = 0, end = array.length - 1) {}
-    // function quickSort(array, start, end) {
-    //   if (start === undefined) {
-    //     start = 0;
-    //     end = array.length - 1;
-    //   } else if (start >= end) {
-    //     return array;
-    //   }
-    //   var rStart = start,
-    //     rEnd = end;
-    //   var pivot = array[Math.floor(Math.random() * (end - start + 1) + start)];
-    //   while (start < end) {
-    //     while (array[start] <= pivot) start++;
-    //     while (array[end] > pivot) end--;
-    //     if (start < end) {
-    //       var temp = array[start];
-    //       array[start] = array[end];
-    //       array[end] = temp;
-    //     }
-    //   }
-    //   setArray([...array]);
-    //   quickSort(array, rStart, start - 1);
-    //   quickSort(array, start, rEnd);
-    // }
-
-    quickSort(array);
+    // Call the async quickSort function
+    await quickSort(array);
+    // Update UI with the final sorted array
     setArray([...array]);
   }
 }

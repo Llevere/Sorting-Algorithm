@@ -69,19 +69,19 @@ function Navbar({
         >
           Bubble Sort
         </button>
-        {/* <button
-        style={{
-          backgroundColor: activeButton === "shell" ? "green" : "",
-          color: activeButton === "shell" ? "white" : "black",
-        }}
-        onClick={() => {
-          handleActiveSorting();
-          algorithmType(new ShellSort());
-          setActiveButton("shell");
-        }}
-      >
-        Shell Sort
-      </button>*/}
+        <button
+          style={{
+            backgroundColor: activeButton === "shell" ? "green" : "",
+            color: activeButton === "shell" ? "white" : "black",
+          }}
+          onClick={() => {
+            handleActiveSorting();
+            algorithmType(new ShellSort());
+            setActiveButton("shell");
+          }}
+        >
+          Shell Sort
+        </button>
         <button
           style={{
             backgroundColor: activeButton === "merge" ? activeButtonColor : "",
@@ -94,19 +94,19 @@ function Navbar({
         >
           Merge Sort
         </button>
-        {/* <button
-        style={{
-          backgroundColor: activeButton === "heap" ? "green" : "",
-          color: activeButton === "heap" ? "white" : "black",
-        }}
-        onClick={() => {
-          algorithmType(new HeapSort());
-          setActiveButton("heap");
-        }}
-      >
-        Heap Sort
-      </button> */}
-        {/* <button
+        <button
+          style={{
+            backgroundColor: activeButton === "heap" ? "green" : "",
+            color: activeButton === "heap" ? "white" : "black",
+          }}
+          onClick={() => {
+            algorithmType(new HeapSort());
+            setActiveButton("heap");
+          }}
+        >
+          Heap Sort
+        </button>
+        <button
           style={{
             backgroundColor: activeButton === "quick" ? activeButtonColor : "",
             color: activeButton === "quick" ? "white" : "black",
@@ -117,7 +117,7 @@ function Navbar({
           }}
         >
           Quick Sort
-        </button> */}
+        </button>
         <button
           style={{
             backgroundColor:
