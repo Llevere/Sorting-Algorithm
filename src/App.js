@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import BubbleSort from "./classes/BubbleSort";
 function App() {
   const [array, setArray] = useState([]);
-  const [speed, setSpeed] = useState(50);
+  const [speed, setSpeed] = useState(20);
   const [sortingBtnDisabled, setSortingBtnDisabled] = useState(false);
   const [algorithmType, setAlgorithmType] = useState(new BubbleSort());
 
