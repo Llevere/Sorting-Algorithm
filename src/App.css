@@ -202,10 +202,6 @@ input[type="range"]:focus {
 }
 
 @media screen and (max-width: 500px) {
-  #array-number {
-    width: 0.75px;
-  }
-
   input[type="range"] {
     width: 3rem;
   }
@@ -217,7 +213,7 @@ input[type="range"]:focus {
 
 @media screen and (max-width: 450px) {
   #array-number {
-    width: 0.5px;
+    width: 0.1px;
   }
 
   #dropdown-button {
@@ -240,7 +236,4 @@ input[type="range"]:focus {
 }
 
 @media screen and (max-width: 400px) {
-  #array-number {
-    width: 1px;
-  }
 }
