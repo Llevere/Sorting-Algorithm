@@ -83,8 +83,8 @@ input[type="range"]:focus::-moz-range-thumb {
 }
 
 #navbar-container {
+  width: 100%;
   background-color: #2055da;
-  height: 7vh;
   display: flex;
   text-align: center;
   align-items: center;
@@ -101,7 +101,7 @@ input[type="range"]:focus::-moz-range-thumb {
   color: transparent;
   text-align: center;
   transition: background-color 0.5s ease;
-  width: 14px;
+  width: 4px;
 }
 
 #array-number:hover {
@@ -134,31 +134,31 @@ input[type="range"]:focus::-moz-range-thumb {
 
 @media screen and (max-width: 1800px) {
   #array-number {
-    width: 12px;
+    width: 3.5px;
   }
 }
 
 @media screen and (max-width: 1600px) {
   #array-number {
-    width: 10px;
+    width: 3px;
   }
 }
 
 @media screen and (max-width: 1250px) {
   #array-number {
-    width: 8px;
+    width: 2.5px;
   }
 }
 
 @media screen and (max-width: 1050px) {
   #array-number {
-    width: 6px;
+    width: 2px;
   }
 }
 
 @media screen and (max-width: 850px) {
   #array-number {
-    width: 4px;
+    width: 1.5px;
   }
 
   #algorithm-handling button {
@@ -168,7 +168,7 @@ input[type="range"]:focus::-moz-range-thumb {
 
 @media screen and (max-width: 750px) {
   #array-number {
-    width: 3.5px;
+    width: 1px;
   }
 
   #algorithm-handling button {
@@ -182,7 +182,7 @@ input[type="range"]:focus::-moz-range-thumb {
 
 @media screen and (max-width: 650px) {
   #array-number {
-    width: 3px;
+    width: 1px;
   }
 
   #algorithm-handling button {
@@ -195,7 +195,7 @@ input[type="range"]:focus::-moz-range-thumb {
 }
 @media screen and (max-width: 550px) {
   #array-number {
-    width: 2.5px;
+    width: 0.15px;
   }
 
   #algorithm-handling button {
@@ -205,7 +205,7 @@ input[type="range"]:focus::-moz-range-thumb {
 
 @media screen and (max-width: 500px) {
   #array-number {
-    width: 2px;
+    width: 0.75px;
   }
 
   input[type="range"] {
@@ -219,7 +219,7 @@ input[type="range"]:focus::-moz-range-thumb {
 
 @media screen and (max-width: 450px) {
   #array-number {
-    width: 1.5px;
+    width: 0.5px;
   }
 
   #input-range-desc {
