@@ -1,12 +1,11 @@
 import Algorithm from "./sortingAlgorithm";
 
-export default class HeapSort {
+export default class HeapSort extends Algorithm {
   async sort(array, setArray, arraySorted, speed) {
-    // Asynchronous Heap Sort function
     const heapSort = async () => {
       const n = array.length;
 
-      // Build heap (rearrange array)
+      // rearrange array
       for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
         await heapify(n, i);
       }
@@ -42,7 +41,6 @@ export default class HeapSort {
         // Swap array[i] and array[largest]
         [array[i], array[largest]] = [array[largest], array[i]];
 
-        // Update UI after each swap
         await new Promise((resolve) => setTimeout(resolve, speed));
         setArray([...array]);
 
@@ -51,9 +49,7 @@ export default class HeapSort {
       }
     };
 
-    // Call the async heapSort function
     await heapSort();
-    // Update UI with the final sorted array
     setArray([...array]);
   }
 }

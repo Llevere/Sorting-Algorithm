@@ -7,15 +7,14 @@ function App() {
   const [array, setArray] = useState([]);
   const [speed, setSpeed] = useState(50);
   const [sortingBtnDisabled, setSortingBtnDisabled] = useState(false);
-  const [cancelSorting, setCancelSorting] = useState(false);
   const [algorithmType, setAlgorithmType] = useState(new BubbleSort());
+
   useEffect(() => {
     setArray(generateNewArray());
   }, []);
 
   function newArray() {
     setArray(generateNewArray());
-    setCancelSorting(false);
   }
   const arraySorted = () => {
     setSortingBtnDisabled(false);
@@ -28,46 +27,6 @@ function App() {
   function setSortingType(sortingType) {
     setAlgorithmType(sortingType);
   }
-
-  const cancelSort = () => {
-    setCancelSorting(true);
-    setSortingBtnDisabled(false);
-  };
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  // Update window width when the window is resized
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Remove event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const handleDynamicSizing = () => {
-    let pixelSize = 0; //30px for an array size of 700
-    let maxArraySize = 700;
-    for (let i = 0; i < maxArraySize; i += 100) {
-      if (i >= array.length) {
-        console.log(`Returning pixel size: ${pixelSize}`);
-        return pixelSize;
-      }
-
-      // Decrease by 5 pixel until it reach
-      pixelSize += 20;
-
-      //
-      if (pixelSize >= maxArraySize) return 30;
-    }
-
-    return pixelSize;
-  };
 
   return (
     <div>
