@@ -41,7 +41,7 @@ function Navbar({
           Reload the page to reset
         </span> */}
         <span style={{ marginLeft: 20, marginRight: 20 }}>
-          Array size - 200
+          Array size - 150
         </span>
       </div>
       <div id="array-handling">
