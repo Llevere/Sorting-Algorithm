@@ -81,19 +81,19 @@ function Navbar({
         }}
       >
         Shell Sort
-      </button>
-      <button
-        style={{
-          backgroundColor: activeButton === "merge" ? "green" : "",
-          color: activeButton === "merge" ? "white" : "black",
-        }}
-        onClick={() => {
-          algorithmType(new MergeSort());
-          setActiveButton("merge");
-        }}
-      >
-        Merge Sort
-      </button> */}
+      </button>*/}
+        <button
+          style={{
+            backgroundColor: activeButton === "merge" ? activeButtonColor : "",
+            color: activeButton === "merge" ? "white" : "black",
+          }}
+          onClick={() => {
+            algorithmType(new MergeSort());
+            setActiveButton("merge");
+          }}
+        >
+          Merge Sort
+        </button>
         {/* <button
         style={{
           backgroundColor: activeButton === "heap" ? "green" : "",
