@@ -75,7 +75,7 @@ function Navbar({
           }}
           onClick={() => {
             algorithmType(new TimSort());
-            setActiveButton("shell");
+            setActiveButton("tim");
           }}
         >
           Tim Sort
