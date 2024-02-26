@@ -6,7 +6,7 @@ import RadixSort from "./classes/RadixSort";
 import SelectionSort from "./classes/SelectionSort";
 import QuickSort from "./classes/QuickSort";
 import HeapSort from "./classes/HeapSort";
-import ShellSort from "./classes/ShellSort";
+import TimSort from "./classes/TimSort";
 
 function Navbar({
   generateNewArray,
@@ -18,6 +18,7 @@ function Navbar({
   const [activeButton, setActiveButton] = useState("bubble");
   const [isSorting, setIsSorting] = useState(false);
   const [sortingSpeed, setSortingSpeed] = useState(20);
+  const [showAlgorithmType, setShowAlgorithmType] = useState(false);
 
   function handleActiveSorting() {
     setIsSorting(true);
@@ -32,15 +33,15 @@ function Navbar({
   return (
     <div id="navbar-container">
       <div style={{ color: "white" }} id="array-desc">
-        <span
+        {/* <span
           style={{
             marginLeft: 20,
           }}
         >
           Reload the page to reset
-        </span>
+        </span> */}
         <span style={{ marginLeft: 20, marginRight: 20 }}>
-          Array size - 100
+          Array size - 200
         </span>
       </div>
       <div id="array-handling">
@@ -61,26 +62,23 @@ function Navbar({
             color: activeButton === "bubble" ? "white" : "black",
           }}
           onClick={() => {
-            handleActiveSorting();
             algorithmType(new BubbleSort());
             setActiveButton("bubble");
           }}
-          /*disabled={isSorting}*/
         >
           Bubble Sort
         </button>
         <button
           style={{
-            backgroundColor: activeButton === "shell" ? "green" : "",
-            color: activeButton === "shell" ? "white" : "black",
+            backgroundColor: activeButton === "tim" ? activeButtonColor : "",
+            color: activeButton === "tim" ? "white" : "black",
           }}
           onClick={() => {
-            handleActiveSorting();
-            algorithmType(new ShellSort());
+            algorithmType(new TimSort());
             setActiveButton("shell");
           }}
         >
-          Shell Sort
+          Tim Sort
         </button>
         <button
           style={{
@@ -96,7 +94,7 @@ function Navbar({
         </button>
         <button
           style={{
-            backgroundColor: activeButton === "heap" ? "green" : "",
+            backgroundColor: activeButton === "heap" ? activeButtonColor : "",
             color: activeButton === "heap" ? "white" : "black",
           }}
           onClick={() => {
@@ -158,6 +156,140 @@ function Navbar({
         >
           Selection Sort
         </button>
+      </div>
+      <div id="dropdown">
+        <button
+          id="dropdown-button"
+          onClick={() => {
+            setShowAlgorithmType(!showAlgorithmType);
+          }}
+        >
+          Algorithm Type:{" "}
+          <span
+            style={{
+              textTransform: "capitalize",
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {activeButton}
+          </span>
+        </button>
+        <div
+          id="dropdown-button-algorithm-type"
+          className={showAlgorithmType ? "active" : ""}
+        >
+          <button
+            style={{
+              backgroundColor:
+                activeButton === "bubble" ? activeButtonColor : "",
+              color: activeButton === "bubble" ? "white" : "black",
+            }}
+            onClick={() => {
+              algorithmType(new BubbleSort());
+              setActiveButton("bubble");
+              setShowAlgorithmType(false);
+            }}
+          >
+            Bubble Sort
+          </button>
+          <button
+            style={{
+              backgroundColor: activeButton === "tim" ? activeButtonColor : "",
+              color: activeButton === "shell" ? "white" : "black",
+            }}
+            onClick={() => {
+              algorithmType(new TimSort());
+              setActiveButton("tim");
+              setShowAlgorithmType(false);
+            }}
+          >
+            Tim Sort
+          </button>
+          <button
+            style={{
+              backgroundColor:
+                activeButton === "merge" ? activeButtonColor : "",
+              color: activeButton === "merge" ? "white" : "black",
+            }}
+            onClick={() => {
+              algorithmType(new MergeSort());
+              setActiveButton("merge");
+              setShowAlgorithmType(false);
+            }}
+          >
+            Merge Sort
+          </button>
+          <button
+            style={{
+              backgroundColor: activeButton === "heap" ? activeButtonColor : "",
+              color: activeButton === "heap" ? "white" : "black",
+            }}
+            onClick={() => {
+              algorithmType(new HeapSort());
+              setActiveButton("heap");
+              setShowAlgorithmType(false);
+            }}
+          >
+            Heap Sort
+          </button>
+          <button
+            style={{
+              backgroundColor:
+                activeButton === "quick" ? activeButtonColor : "",
+              color: activeButton === "quick" ? "white" : "black",
+            }}
+            onClick={() => {
+              algorithmType(new QuickSort());
+              setActiveButton("quick");
+              setShowAlgorithmType(false);
+            }}
+          >
+            Quick Sort
+          </button>
+          <button
+            style={{
+              backgroundColor:
+                activeButton === "insertion" ? activeButtonColor : "",
+              color: activeButton === "insertion" ? "white" : "black",
+            }}
+            onClick={() => {
+              algorithmType(new InsertionSort());
+              setActiveButton("insertion");
+              setShowAlgorithmType(false);
+            }}
+            /*disabled={isSorting}*/
+          >
+            Insertion Sort
+          </button>
+          {/* <button
+        style={{
+          backgroundColor: activeButton === "radix" ? "green" : "",
+          color: activeButton === "radix" ? "white" : "black",
+        }}
+        onClick={() => {
+          algorithmType(new RadixSort());
+          setActiveButton("radix");
+        }}
+      >
+        Radix Sort
+      </button> */}
+          <button
+            style={{
+              backgroundColor:
+                activeButton === "selection" ? activeButtonColor : "",
+              color: activeButton === "selection" ? "white" : "black",
+            }}
+            onClick={() => {
+              algorithmType(new SelectionSort());
+              setActiveButton("selection");
+              setShowAlgorithmType(false);
+            }}
+            /*disabled={isSorting}*/
+          >
+            Selection Sort
+          </button>
+        </div>
       </div>
 
       <span id="input-range-desc">

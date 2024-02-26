@@ -1,6 +1,6 @@
 import Algorithm from "./sortingAlgorithm";
 
-export default class ShellSort extends Algorithm {
+export default class TimSort extends Algorithm {
   async sort(array, setArray, arraySorted, speed) {
     const MIN_MERGE = 32;
 
