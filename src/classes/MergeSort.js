@@ -2,6 +2,14 @@ import Algorithm from "./sortingAlgorithm";
 
 export default class MergeSort extends Algorithm {
   async sort(array, setArray, arraySorted, speed) {
+    const isSorted = array.every((element, index) => {
+      return index === 0 || element >= array[index - 1];
+    });
+
+    if (isSorted) {
+      arraySorted();
+      return;
+    }
     const mergeSort = async (arr, start, end) => {
       if (start >= end) {
         return;

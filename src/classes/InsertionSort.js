@@ -6,29 +6,23 @@ export default class InsertionSort extends Algorithm {
       const len = array.length;
       let tempArray = array.slice();
 
-      return new Promise((resolve) => {
-        // Iterate through the array starting from the second element
-        for (let i = 1; i < len; i++) {
-          // Set a timeout for each iteration
-          setTimeout(() => {
-            let current = tempArray[i]; // Current element to insert
-            let j = i - 1;
+      // Iterate through the array starting from the second element
+      for (let i = 1; i < len; i++) {
+        // Set a timeout for each iteration
+        let current = tempArray[i]; // Current element to insert
+        let j = i - 1;
 
-            // Move elements of tempArray[0..i-1], that are greater than current,
-            // to one position ahead of their current position
-            while (j >= 0 && tempArray[j] > current) {
-              tempArray[j + 1] = tempArray[j];
-              j--;
-              //setArray([...tempArray]);
-            }
-            tempArray[j + 1] = current; // Place current element at its correct position
-            if (i === len - 1) {
-              resolve();
-            }
-            setArray([...tempArray]); // Update the array state after each iteration
-          }, i * speed); // Adjust the timeout delay according to your preference
+        // Move elements of tempArray[0..i-1], that are greater than current,
+        // to one position ahead of their current position
+        while (j >= 0 && tempArray[j] > current) {
+          tempArray[j + 1] = tempArray[j];
+          j--;
+          //setArray([...tempArray]);
         }
-      });
+        tempArray[j + 1] = current; // Place current element at its correct position
+        await new Promise((resolve) => setTimeout(resolve, speed));
+        setArray([...tempArray]); // Update the array state after each iteration
+      }
     }
     await insertionSort();
     arraySorted();

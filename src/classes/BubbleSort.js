@@ -15,10 +15,10 @@ export default class BubbleSort extends Algorithm {
                 tempArray[j + 1] = temp;
                 setArray([...tempArray]);
               }
-              if (i === arrayLength - 1) resolve();
             }, (i * arrayLength + j) * speed);
           }
         }
+        resolve();
       });
     }
     await bubbleSort();

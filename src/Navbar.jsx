@@ -17,6 +17,28 @@ function Navbar({
   const [activeButton, setActiveButton] = useState("bubble");
   const [sortingSpeed, setSortingSpeed] = useState(20);
   const [showAlgorithmType, setShowAlgorithmType] = useState(false);
+  const [sortingText, setSortingText] = useState("Sort");
+
+  useEffect(() => {
+    let intervalId;
+    if (disableSort) {
+      setSortingText("Sorting");
+      intervalId = setInterval(() => {
+        setSortingText((prevText) => {
+          switch (prevText.slice(-3)) {
+            case "...":
+              return prevText.slice(0, -3);
+            default:
+              return prevText + ".";
+          }
+        });
+      }, 500);
+    } else {
+      setSortingText("Sort");
+    }
+
+    return () => clearInterval(intervalId);
+  }, [disableSort]);
 
   function handleSpeedChange(e) {
     setSortingSpeed(e.target.value);
@@ -44,11 +66,16 @@ function Navbar({
           onClick={() => {
             generateNewArray();
           }}
+          disabled={disableSort}
         >
           New Data Set
         </button>
-        <button onClick={() => sortArray()} disabled={disableSort}>
-          Sort
+        <button
+          onClick={() => sortArray()}
+          disabled={disableSort}
+          style={{ width: disableSort ? 65 : 60, padding: 3 }}
+        >
+          {sortingText}
         </button>
       </div>
       <div id="algorithm-handling">
